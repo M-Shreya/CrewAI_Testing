@@ -1,0 +1,50 @@
+code_analysis_task:
+  description: >
+    Read the following files to understand the application logic:
+    1. {app_path}
+    2. {template_path}
+
+    Analyze the code to identify:
+    - All available routes (URLs).
+    - The HTTP methods (GET, POST) supported by each route.
+    - Input parameters required for POST requests (e.g. form fields).
+    - Success and Failure conditions (e.g. return strings).
+
+    Output a structured "Test Plan" describing the scenarios to test (e.g. "Test Login Success", "Test Login Failure").
+  expected_output: >
+    A clear, step-by-step description of the logical flows found in the application.
+  agent: workflow_analyst
+  human_input: true
+
+test_generation_task:
+  description: >
+    Using the Test Plan provided by the Analyst, write a complete Python test file.
+    
+    The test file MUST:
+    - Import `pytest`.
+    - Import the `app` from `testing.target.app` (adjust import path as needed, assuming we run from project root).
+    - Use `app.test_client()` yielding a client fixture.
+    - Implement test functions for each scenario (Success, Failure).
+    - Assert the expected response data (e.g. `assert b"Success" in response.data`).
+
+    Use the `FileWriteTool` to save this file to `tests/test_webapp.py`.
+    Make sure the code is syntactically correct and includes all imports.
+  expected_output: >
+    A confirmation that the file `tests/test_webapp.py` has been created with the test code.
+  agent: test_engineer
+  human_input: true
+
+test_execution_task:
+  description: >
+    Run the generated tests using `pytest` on `tests/test_webapp.py`.
+    Use the `TestRunnerTool` to execute the file.
+    
+    Analyze the output of the tool (PASS/FAIL status).
+    Write a final report summarizing:
+    - Which tests were run.
+    - Which passed/failed.
+    - Any errors encountered.
+  expected_output: >
+    A final markdown report summarizing the test execution results.
+  agent: qa_manager
+  human_input: true
