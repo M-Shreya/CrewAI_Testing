@@ -21,7 +21,7 @@ class Testing():
             config=self.agents_config['workflow_analyst'],
             tools=[FileReadTool()],
             verbose=True,
-            llm=LLM(model=os.getenv("MODEL"), api_key=os.getenv("HF_TOKEN"))
+            llm=LLM(model=groq/llama-3.3-70b-versatile, api_key=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)
         )
 
     @agent
@@ -30,7 +30,7 @@ class Testing():
             config=self.agents_config['test_engineer'],
             tools=[FileWriteTool()],
             verbose=True,
-            llm=LLM(model=os.getenv("MODEL"), api_key=os.getenv("HF_TOKEN"))
+            llm=LLM(model=groq/llama-3.3-70b-versatile, api_key=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)
         )
 
     @agent
@@ -39,7 +39,7 @@ class Testing():
             config=self.agents_config['qa_manager'],
             tools=[TestRunnerTool()],
             verbose=True,
-            llm=LLM(model=os.getenv("MODEL"), api_key=os.getenv("HF_TOKEN"))
+            llm=LLM(model=groq/llama-3.3-70b-versatile, api_key=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)
         )
 
     @task
@@ -69,3 +69,4 @@ class Testing():
             process=Process.sequential,
             verbose=True,
         )
+
