@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 import sys
 import warnings
+import os
+os.environ["RICH_DISABLE"] = "1"
+os.environ["CREWAI_DISABLE_TELEMETRY"] = "true"
+os.environ["CREWAI_DISABLE_COLOR"] = "true"
 from datetime import datetime
 from testing.crew import Testing
 
@@ -97,3 +101,4 @@ def run_with_trigger():
 
 if __name__ == "__main__":
     run()
+
