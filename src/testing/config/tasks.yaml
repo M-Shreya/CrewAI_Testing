@@ -14,7 +14,7 @@ code_analysis_task:
   expected_output: >
     A clear, step-by-step description of the logical flows found in the application.
   agent: workflow_analyst
-  human_input: true
+  human_input: false
 
 test_generation_task:
   description: >
@@ -32,7 +32,7 @@ test_generation_task:
   expected_output: >
     A confirmation that the file `tests/test_webapp.py` has been created with the test code.
   agent: test_engineer
-  human_input: true
+  human_input: false
 
 test_execution_task:
   description: >
@@ -47,4 +47,5 @@ test_execution_task:
   expected_output: >
     A final markdown report summarizing the test execution results.
   agent: qa_manager
-  human_input: true
+  human_input: false
+
