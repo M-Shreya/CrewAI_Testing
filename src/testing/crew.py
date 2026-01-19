@@ -21,7 +21,7 @@ class Testing():
             config=self.agents_config['workflow_analyst'],
             tools=[FileReadTool()],
             verbose=True,
-            llm=LLM(model=groq/llama-3.3-70b-versatile, api_key=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)
+            llm=LLM(model="groq/llama-3.3-70b-versatile", api_key="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")
         )
 
     @agent
@@ -30,7 +30,7 @@ class Testing():
             config=self.agents_config['test_engineer'],
             tools=[FileWriteTool()],
             verbose=True,
-            llm=LLM(model=groq/llama-3.3-70b-versatile, api_key=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)
+            llm=LLM(model="groq/llama-3.3-70b-versatile", api_key="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")
         )
 
     @agent
@@ -39,7 +39,7 @@ class Testing():
             config=self.agents_config['qa_manager'],
             tools=[TestRunnerTool()],
             verbose=True,
-            llm=LLM(model=groq/llama-3.3-70b-versatile, api_key=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)
+            llm=LLM(model="groq/llama-3.3-70b-versatile", api_key="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")
         )
 
     @task
@@ -69,5 +69,6 @@ class Testing():
             process=Process.sequential,
             verbose=True,
         )
+
 
 
